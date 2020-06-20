@@ -25,5 +25,24 @@ class UserStore {
         }
     }
     
+    static func doesUserDocumentExist(_ name: String = "UserStore.doesUserDocumentExist", withUID uid: String, _ completion: @escaping (Bool?, Error) -> Void) {
+        Logging.log(type: .start, location: name, message: "Checking if user exists...")
+        
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+            if let error = error {
+                Logging.log(type: .system, location: name, message: error.localizedDescription)
+                completion(nil, Error.error(type: .system, text: error.localizedDescription))
+                return
+            }
+            
+            guard let snapshot = snapshot else {
+                Logging.log(type: .flag, location: name, message: "There seems to have been error retrieving the user.")
+                completion(nil, Error.error(type: .system, text: "There seems to have been error retrieving the user."))
+                return
+            }
+            
+            completion(snapshot.exists, Error.error(type: .none, text: "Document successfully retrieved!"))
+        }
+    }
 }
 
