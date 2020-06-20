@@ -79,15 +79,29 @@ extension String {
         
         struct doesExist {
             static let name = "CurrentUser.doesExist"
-            static let logDoesNotExist = "User does not exist."
-            static let logExists = "User exists with id "
+            static let doesNotExist = "User does not exist."
+            static let exists = "User exists with id "
         }
         
         struct signOut {
             static let name = "CurrentUser.signOut"
-            static let logSignOut = "Signed out user with id "
             static let signOut = "Successfully signed out user with id"
             static let doesNotExist = "User does not exist."
+        }
+        
+    }
+    
+}
+
+// Current User API
+extension String {
+    
+    class UserStore {
+        
+        struct store {
+
+            // TODO: Finish
+
         }
         
     }
