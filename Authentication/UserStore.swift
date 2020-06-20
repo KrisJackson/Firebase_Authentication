@@ -25,10 +25,11 @@ class UserStore {
         }
     }
     
-    static func doesUserDocumentExist(_ name: String = "UserStore.doesUserDocumentExist", withUID uid: String, _ completion: @escaping (Bool?, Error) -> Void) {
+    static func doesUserDocumentExist(_ name: String = "UserStore.doesUserDocumentExist", user: User, _ completion: @escaping (Bool?, Error) -> Void) {
         Logging.log(type: .start, location: name, message: "Checking if user exists...")
         
-        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, error) in
+        Firestore.firestore().collection("users").document(user.uid).getDocument { (snapshot, error) in
+        
             if let error = error {
                 Logging.log(type: .system, location: name, message: error.localizedDescription)
                 completion(nil, Error.error(type: .system, text: error.localizedDescription))
