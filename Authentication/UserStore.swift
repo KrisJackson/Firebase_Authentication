@@ -10,7 +10,7 @@ import Firebase
 
 class UserStore {
     
-    static func store(_ name: String = "DataStore.store", data: [String: Any], forUser user: User = Auth.auth().currentUser!, _ completion: @escaping (Error) -> Void) {
+    static func store(_ name: String = "UserStore.store", data: [String: Any], forUser user: User = Auth.auth().currentUser!, _ completion: @escaping (Error) -> Void) {
         Logging.log(type: .start, location: name, message: "Begin storing user data...")
         
         Firestore.firestore().collection("users").document(user.uid).setData(data, merge: true) { (error) in
