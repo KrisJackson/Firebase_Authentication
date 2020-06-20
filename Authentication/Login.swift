@@ -16,7 +16,7 @@ class Login {
         let password = p.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if email.isEmpty || password.isEmpty {
-            Logging.log(type: .warning, location: name, message: String.Login.login.logEmptyFields)
+            Logging.log(type: .warning, location: name, message: String.Login.login.emptyFields)
             completion(nil, Error.error(type: .weak, text: String.Login.login.emptyFields))
             return
         }
@@ -28,7 +28,7 @@ class Login {
                 return
             }
             
-            Logging.log(type: .success, location: name, message: String.Login.login.logSuccess)
+            Logging.log(type: .success, location: name, message: String.Login.login.success)
             completion(Auth.auth().currentUser, Error.error(type: .none, text: String.Login.login.success))
             return
             

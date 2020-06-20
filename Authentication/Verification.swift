@@ -23,7 +23,7 @@ class Verification {
     }
     
     static func send(_ name: String = String.Verification.send.name, user: User = Auth.auth().currentUser!, completion: @escaping (Error) -> Void) {
-        Logging.log(type: .start, location: name, message: "Begin verification...")
+        Logging.log(type: .start, location: name, message: String.Verification.send.logStart)
         
         user.sendEmailVerification { (error) in
             if let error = error {

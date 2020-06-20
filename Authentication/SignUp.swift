@@ -18,14 +18,14 @@ class SignUp {
         let confirm = c.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if email.isEmpty || password.isEmpty || confirm.isEmpty {
-            Logging.log(type: .warning, location: name, message: String.SignUp.signUp.logEmailEmpty)
+            Logging.log(type: .warning, location: name, message: String.SignUp.signUp.emailEmpty)
             completion(nil, Error.error(type: .weak, text: String.SignUp.signUp.emailEmpty))
             return
         }
         
         if (password != confirm) {
-            Logging.log(type: .warning, location: name, message: String.SignUp.signUp.logPasswordMatch)
-            completion(nil, Error.error(type: .weak, text: String.SignUp.signUp.passwordMatch))
+            Logging.log(type: .warning, location: name, message: String.SignUp.signUp.matchPasswords)
+            completion(nil, Error.error(type: .weak, text: String.SignUp.signUp.matchPasswords))
             return
         }
         
@@ -42,30 +42,30 @@ class SignUp {
                 return
             }
             
-            Logging.log(type: .success, location: name, message: "Account created!")
-            completion(Auth.auth().currentUser, Error.error(type: .none, text: "Account created!"))
+            Logging.log(type: .success, location: name, message: String.SignUp.signUp.success)
+            completion(Auth.auth().currentUser, Error.error(type: .none, text: String.SignUp.signUp.success))
             return
         }
     }
     
     static private func forceExtentsion(_ name: String = String.SignUp.forceExtentsion.name, email e: String, extensions exts: [String] = []) -> Error {
-        return Logging.wrapper(title: name, startMessage: String.SignUp.forceExtentsion.logStart, endMessage: "Done checking extension!") {
+        return Logging.wrapper(title: name, startMessage: String.SignUp.forceExtentsion.logStart, endMessage: String.SignUp.forceExtentsion.logEnd) {
             let email = e.trimmingCharacters(in: .whitespacesAndNewlines)
             let emailExtension = getExtension(email: email)
             
             if exts.isEmpty {
-                Logging.log(type: .flag, location: name, message: "No extension given")
-                return Error.error(type: .none, text: "No extensions given")
+                Logging.log(type: .flag, location: name, message: String.SignUp.forceExtentsion.noExt)
+                return Error.error(type: .none, text: String.SignUp.forceExtentsion.noExt)
             }
             
             if exts.contains(emailExtension) {
                 
-                Logging.log(type: .success, location: name, message: String.SignUp.forceExtentsion.logSuccess)
+                Logging.log(type: .success, location: name, message: String.SignUp.forceExtentsion.success)
                 return Error.error(type: Error.ErrorType.none, text: String.SignUp.forceExtentsion.success)
                 
             } else {
                 
-                Logging.log(type: .warning, location: name, message: String.SignUp.forceExtentsion.logBadExt)
+                Logging.log(type: .warning, location: name, message: String.SignUp.forceExtentsion.badExt)
                 return Error.error(type: .weak, text: String.SignUp.forceExtentsion.badExt)
                 
             }

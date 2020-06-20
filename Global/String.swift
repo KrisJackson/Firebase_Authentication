@@ -17,8 +17,6 @@ extension String {
             static let logStart = "Begin authentication..."
             static let success = "User has successfully logged in!"
             static let emptyFields = "All fields must be completed!"
-            static let logEmptyFields = "Email or password is empty."
-            static let logSuccess = "User has successfully logged in!"
         }
         
     }
@@ -34,16 +32,11 @@ extension String {
             static let name = "Verification.isVerified"
             static let emailVerified = "User email verified!"
             static let emailNotVerified = "User email is not verified"
-            static let logNoUser = "No user specified!"
         }
         
         struct send {
             static let name = "Verification.send"
-            static let emailRequired = "Email is required!"
-            static let hasBeenVerified = "Email has already been verified."
-            static let logStart = "Preparing to send email..."
-            static let logEmailEmpty = "Email is empty"
-            static let logEmailVerified = "Email has been verified."
+            static let logStart = "Begin verification..."
             static let logSent = "Verification email successfully sent to "
             static let spam =  "Be sure to check you spam folder and click the link in the email."
             static let sent = "A verification email has been sent to "
@@ -61,19 +54,18 @@ extension String {
         struct signUp {
             static let name = "SignUp.signUp"
             static let logStart = "Creating user..."
-            static let logEmailEmpty = "Email or password is empty"
-            static let emailEmpty = "All fields must be completed!"
-            static let logPasswordMatch = "Passwords do not match"
-            static let passwordMatch = "Passwords must match!"
+            static let emailEmpty = "All fields must be filled!"
+            static let matchPasswords = "Passwords do not match"
+            static let success = "Account created!"
         }
         
         struct forceExtentsion {
             static let name = "SignUp.forceExtentsion"
             static let logStart = "Checking extension..."
-            static let logSuccess = "Email extension valid."
+            static let logEnd =  "Done checking extension!"
+            static let noExt = "No extension given"
             static let success = "This email is supported!"
-            static let logBadExt = "Email does not contain a valid extension."
-            static let badExt = "This email address is not supported. Please enter your provided work email."
+            static let badExt = "This email address is not supported."
         }
         
     }
