@@ -109,6 +109,7 @@ class SignUp_Test: XCTestCase {
     }
     
     func testUsedAccount() {
+        // Create a test account in Firebase and replace email and password
         let email = "test@gmail.com"
         let password = "testing"
         let confirmPassword = "testing"

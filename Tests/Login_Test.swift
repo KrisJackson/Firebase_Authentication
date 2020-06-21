@@ -133,6 +133,7 @@ class Login_Test: XCTestCase {
     }
     
     func testLogin() {
+        // If this fails, create a test account in Firebase and replace email and password
         let email = "test@gmail.com"
         let password = "testing"
         let expectation = XCTestExpectation(description: "Login_Test.testLogin")
